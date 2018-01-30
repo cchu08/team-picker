@@ -4,7 +4,9 @@ import {
   SET_ALL_SPORTS,
   SET_SEARCH_TERM,
   SET_TAB,
-  SET_ACTIVE_TEAMS
+  SET_ACTIVE_TEAMS,
+  SET_FAVORITES,
+  SELECT_FAVORITES
 } from '../actions/teampickerActions';
 
 const sportsData = (state = { allSports: [], activeTab: 'nba',activeTeams: [] }, action) => {
@@ -20,6 +22,15 @@ const sportsData = (state = { allSports: [], activeTab: 'nba',activeTeams: [] },
   }
 };
 
+const favoritesData = (state = [], action) => {
+  switch (action.type) {
+    case SET_FAVORITES:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const searchTerm = (state = '', action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -32,7 +43,8 @@ const searchTerm = (state = '', action) => {
 
 const rootReducer = combineReducers({
   sportsData,
-  searchTerm
+  searchTerm,
+  favoritesData
 });
 
 export default rootReducer;

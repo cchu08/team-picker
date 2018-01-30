@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
-import Sport from './Sport';
+import TabContent from './TabContent';
 import { fetchAllSports, setTabAndTeams } from '../actions/teampickerActions';
 
 class SportsPanel extends Component {
@@ -23,8 +23,9 @@ class SportsPanel extends Component {
           {sports.map(sport => (
             <Menu.Item active={activeTab === sport.meta.name} name={sport.meta.name.toUpperCase()} onClick={handleTabChange} key={sport.meta.id} />
           ))}
+          <Menu.Item active={activeTab === "favorites"} name="Favorites" onClick={handleTabChange} />
         </Menu>
-        <Sport attached="bottom" />
+        <TabContent attached="bottom" />
       </div>
     );
   }

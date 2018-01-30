@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react';
 import Team from './Team';
 import { setTeams } from '../actions/teampickerActions';
 
-class Sport extends Component {
+class TabContent extends Component {
   constructor(props) {
     super(props);
   }
@@ -35,4 +35,4 @@ const mapStateToProps = state => ({
   teams: state.sportsData.activeTeams
 });
 
-export default connect(mapStateToProps)(Sport);
+export default connect(mapStateToProps)(TabContent);
