@@ -14,8 +14,7 @@ class Team extends Component {
 
   toggleStar(event, data) {
     const { teamData } = this.props;
-    console.log(event.target.rating, data);
-    console.log(`this is the team: ${teamData.full_name}`)
+    console.log(event.target, data);
   }
 
 
@@ -27,7 +26,7 @@ class Team extends Component {
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
         <Image src={logo} />
         <h3>{full_name}</h3>
-        <Rating icon="star" size="large" style={{ paddingTop: '5%' }} onRate={this.toggleStar}/>
+        <Rating icon="star" size="huge" style={{ paddingTop: '5%' }} onRate={this.toggleStar} defaultRating={(teamData.full_name === 'Los Angeles Lakers' ? 1 : 0)}/>
       </div>
     );
   }
