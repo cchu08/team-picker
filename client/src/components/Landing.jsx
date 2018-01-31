@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Search from './Search';
 import SportsPanel from './SportsPanel';
-import { fetchAllSports, setTabAndTeams, fetchFavoriteTeams } from '../actions/teampickerActions'
+import { fetchAllSports, setTabAndTeams } from '../actions/teampickerActions'
 
 class Landing extends Component {
   constructor(props) {
@@ -10,9 +10,23 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-    const { getSports, getFavorites, handleTabChange } = this.props;
-    // getSports();
-    // getFavorites();
+    const { getSports, favorites, handleTabChange, activeTab } = this.props;
+
+    const callSports = () => {
+      return new Promise((resolve, reject) => {
+        getSports(resolve);
+      });
+    };
+
+    async function combineSportsAndFavorites() {
+      const sports = await callSports();
+      return sports.concat([ favorites ]);
+    }
+
+    combineSportsAndFavorites().then((completeList) => {
+      console.log(completeList)
+      handleTabChange({ name: activeTab }, completeList);
+    });
   }
 
   render() {
@@ -25,16 +39,21 @@ class Landing extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  activeTab: state.sportsData.activeTab,
+  favorites: state.favorites
+})
+
 const mapDispatchToProps = dispatch => ({
-  getSports() {
-    dispatch(fetchAllSports());
+  getSports(cb) {
+    dispatch(fetchAllSports(cb));
   },
-  getFavorites() {
-    dispatch(fetchFavoriteTeams());
+  getFavorites(cb) {
+    dispatch(fetchFavorites(cb));
   },
-  handleTabChange(event, { name }) {
-    dispatch(setTabAndTeams(name));
+  handleTabChange({ name }, list) {
+    dispatch(setTabAndTeams(name, list));
   }
 });
 
-export default connect(state => state, mapDispatchToProps)(Landing);
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);
