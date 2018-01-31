@@ -7,11 +7,8 @@ import { fetchAllSports, setTabAndTeams } from '../actions/teampickerActions';
 class SportsPanel extends Component {
   constructor(props) {
     super(props);
-
     this.switchTabs = this.switchTabs.bind(this);
   }
-
-
 
   componentDidMount() {
     const { handleTabChange, activeTab } = this.props;
@@ -33,7 +30,7 @@ class SportsPanel extends Component {
     const { sports, searchTerm, activeTab } = this.props;
 
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '50%', marginLeft: '5%' }}>
         <Menu tabular attached="top">
           {sports.map(sport => (
             <Menu.Item active={activeTab === sport.meta.name} name={sport.meta.name.toUpperCase()} onClick={this.switchTabs} key={sport.meta.id} />

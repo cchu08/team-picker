@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Search } from 'semantic-ui-react';
 import { setSearchTerm } from '../actions/teampickerActions';
 
-class Search extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,8 +11,8 @@ class Search extends Component {
   render() {
     const { handleSearchTermChange, searchTerm } = this.props;
     return (
-      <div>
-        <input type="text" placeholder="Find Teams" onChange={handleSearchTermChange} value={searchTerm}/>
+      <div style={{ padding: '5%' }}>
+        <Search showNoResults={false} placeholder="Find Teams" onSearchChange={handleSearchTermChange} value={searchTerm}/>
       </div>
     );
   }
@@ -29,4 +30,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

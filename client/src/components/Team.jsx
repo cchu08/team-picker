@@ -24,22 +24,23 @@ class Team extends Component {
     const { full_name, abbr, logo, primary_color, secondary_color } = teamData;
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
+      <div style={{ margin: '5%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
         <Image src={logo} />
         <h3>{full_name}</h3>
-        <Rating icon="star" size="huge" style={{ paddingTop: '5%' }} onRate={this.handleFavorites} defaultRating={favoriteTeams.map(team => team.full_name).indexOf(full_name) >= 0 ? 1 : 0}/>
+        <Rating icon="star" size="massive" style={{ paddingTop: '5%' }} onRate={this.handleFavorites} defaultRating={favoriteTeams.map(team => team.full_name).indexOf(full_name) >= 0 ? 1 : 0}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  favoriteTeams: state.favorites.teams
+  favoriteTeams: state.favorites.teams,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleFavorites(team, favorites) {
-    dispatch(saveFavorites(team, favorites))
+  toggleFavorites(team, favoriteTeams) {
+    dispatch(saveFavorites(team, favoriteTeams))
   }
 })
 

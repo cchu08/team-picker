@@ -21,10 +21,14 @@ export const setFavoriteTeams = (favorites) => ({
   payload: favorites
 });
 
-export const saveFavorites = favorites => dispatch => {
+export const saveFavorites = (team, favoriteTeams) => dispatch => {
   // save favorites to local storage, dispatch set favorites
+  var newFavorites = favoriteTeams.map(favorite => favorite.full_name).indexOf(team.full_name) >= 0 ?
+    favoriteTeams.filter(favorite => favorite.full_name !== team.full_name)
+    :
+    favoriteTeams.concat([ team ]);
 
-  dispatch(setFavoriteTeams(favorites));
+  dispatch(setFavoriteTeams(newFavorites));
 }
 
 export const setSports = (sports) => ({

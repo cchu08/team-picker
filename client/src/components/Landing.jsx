@@ -17,7 +17,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center' }}>
         <Search />
         <SportsPanel />
       </div>
