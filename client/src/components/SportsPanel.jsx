@@ -10,12 +10,6 @@ class SportsPanel extends Component {
     this.switchTabs = this.switchTabs.bind(this);
   }
 
-  componentDidMount() {
-    const { handleTabChange, activeTab } = this.props;
-
-    this.switchTabs(null, { name: activeTab })
-  }
-
   switchTabs(event, { name }) {
     const { handleTabChange, sports, favorites } = this.props;
 

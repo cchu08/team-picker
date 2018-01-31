@@ -1,9 +1,13 @@
+require("babel-core/register");
+require('babel-polyfill');
+
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
   entry: [
+    'babel-polyfill',
     './client/src/ClientApp.jsx'
   ],
   devtool: 'source-map',
