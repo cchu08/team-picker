@@ -12,7 +12,7 @@ import {
 import nfl from '../../../mock-data/nfl';
 import nhl from '../../../mock-data/nhl';
 import nba from '../../../mock-data/nba';
-import favorites from '../../../mock-data/favorites';
+import favoritesList from '../../../mock-data/favorites';
 
 
 const sportsData = (state = { allSports: [nba, nfl, nhl], activeTab: 'nba', activeTeams: [] }, action) => {
@@ -28,7 +28,7 @@ const sportsData = (state = { allSports: [nba, nfl, nhl], activeTab: 'nba', acti
   }
 };
 
-const favoritesData = (state = favorites, action) => {
+const favorites = (state = favoritesList, action) => {
   switch (action.type) {
     case SET_FAVORITE_TEAMS:
       return { ...state, teams: action.payload };
@@ -49,7 +49,7 @@ const searchTerm = (state = '', action) => {
 const rootReducer = combineReducers({
   sportsData,
   searchTerm,
-  favoritesData
+  favorites
 });
 
 export default rootReducer;

@@ -27,7 +27,7 @@ class Team extends Component {
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
         <Image src={logo} />
         <h3>{full_name}</h3>
-        <Rating icon="star" size="huge" style={{ paddingTop: '5%' }} onRate={this.handleFavorites} defaultRating={(favorites.teams.filter(team => team.full_name).indexOf(full_name) >= 0 ? 1 : 0)}/>
+        <Rating icon="star" size="huge" style={{ paddingTop: '5%' }} onRate={this.handleFavorites} defaultRating={favoriteTeams.map(team => team.full_name).indexOf(full_name) >= 0 ? 1 : 0}/>
       </div>
     );
   }

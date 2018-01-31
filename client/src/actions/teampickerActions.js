@@ -37,9 +37,10 @@ export const setSearchTerm = (input) => ({
   payload: input
 })
 
-export const setTeams = (sportName) => {
+export const setTeams = (sportName, allSports) => {
   // get sport function
   // get favorites function
+  console.log(`what are allSports: ${allSports}`)
   var activeSport = allSports.filter(sport => sport.meta.name === sportName).map(sport => sport.teams);
   var activeTeams = [].concat.apply([], activeSport);
 
@@ -47,8 +48,8 @@ export const setTeams = (sportName) => {
   return { type: SET_ACTIVE_TEAMS, payload: activeTeams };
 };
 
-export const setTabAndTeams = (tabName) => dispatch => {
-  dispatch(setTeams(tabName));
+export const setTabAndTeams = (tabName, sports) => dispatch => {
+  dispatch(setTeams(tabName, sports));
   dispatch(setTab(tabName));
 };
 
