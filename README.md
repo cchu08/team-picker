@@ -24,8 +24,6 @@ Open at http://localhost:8080
 Take-Home
 ------------
 
-
-
 Build a simple UI that looks something like this. Feel free to have some design liberty. We'd like to see you build this as a React application with Redux to manage the state being passed around the components. To give you a summary of the what the mini application does
 
 - Read json file as mock API responses (Attached).
@@ -35,3 +33,5 @@ Build a simple UI that looks something like this. Feel free to have some design 
 - For the purpose of this exercise you can store the users favorite teams in localstorage
 - If the user refreshes the page, the teams are read from localstorage and displayed like below with a highlight indicating they are your favorite teams.
 
+![](teampicker1.png)
+![](teampicker2.png)
