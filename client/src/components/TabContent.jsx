@@ -22,7 +22,7 @@ class TabContent extends Component {
               return !searchTerm.length;
             }
           })
-          .map(team => <Team key={team.id} {...team} />)
+          .map(team => <Team key={team.id} teamData={team} />)
         }
       </div>
     );
