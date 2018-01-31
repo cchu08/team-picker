@@ -11,8 +11,8 @@ class Landing extends Component {
 
   componentDidMount() {
     const { getSports, getFavorites, handleTabChange } = this.props;
-    getSports();
-    getFavorites();
+    // getSports();
+    // getFavorites();
   }
 
   render() {

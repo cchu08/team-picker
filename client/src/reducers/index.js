@@ -5,11 +5,17 @@ import {
   SET_SEARCH_TERM,
   SET_TAB,
   SET_ACTIVE_TEAMS,
-  SET_FAVORITES,
+  SET_FAVORITE_TEAMS,
   SELECT_FAVORITES
 } from '../actions/teampickerActions';
 
-const sportsData = (state = { allSports: [], activeTab: 'nba',activeTeams: [] }, action) => {
+import nfl from '../../../mock-data/nfl';
+import nhl from '../../../mock-data/nhl';
+import nba from '../../../mock-data/nba';
+import favorites from '../../../mock-data/favorites';
+
+
+const sportsData = (state = { allSports: [nba, nfl, nhl], activeTab: 'nba', activeTeams: [] }, action) => {
   switch (action.type) {
     case SET_ALL_SPORTS:
       return { ...state, allSports: action.payload };
@@ -22,10 +28,10 @@ const sportsData = (state = { allSports: [], activeTab: 'nba',activeTeams: [] },
   }
 };
 
-const favoritesData = (state = [], action) => {
+const favoritesData = (state = favorites, action) => {
   switch (action.type) {
-    case SET_FAVORITES:
-      return action.payload;
+    case SET_FAVORITE_TEAMS:
+      return { ...state, teams: action.payload };
     default:
       return state;
   }
@@ -39,7 +45,6 @@ const searchTerm = (state = '', action) => {
       return state;
   }
 };
-
 
 const rootReducer = combineReducers({
   sportsData,
