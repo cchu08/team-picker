@@ -7,23 +7,35 @@ import { fetchAllSports, setTabAndTeams } from '../actions/teampickerActions';
 class SportsPanel extends Component {
   constructor(props) {
     super(props);
+    this.switchTabs = this.switchTabs.bind(this);
   }
 
   componentDidMount() {
     const { handleTabChange, activeTab } = this.props;
-    handleTabChange(null, { name: activeTab });
+
+    this.switchTabs(null, { name: activeTab })
+  }
+
+  switchTabs(event, { name }) {
+    const { handleTabChange, sports, favorites } = this.props;
+
+    const completeListOfTeams = sports.concat([ favorites ])
+    console.log(`whole list of teams: ${completeListOfTeams}`);
+
+    handleTabChange({ name: name }, completeListOfTeams)
+
   }
 
   render() {
-    const { sports, searchTerm, activeTab, handleTabChange } = this.props;
+    const { sports, searchTerm, activeTab } = this.props;
 
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '50%', marginLeft: '5%' }}>
         <Menu tabular attached="top">
           {sports.map(sport => (
-            <Menu.Item active={activeTab === sport.meta.name} name={sport.meta.name.toUpperCase()} onClick={handleTabChange} key={sport.meta.id} />
+            <Menu.Item active={activeTab === sport.meta.name} name={sport.meta.name.toUpperCase()} onClick={this.switchTabs} key={sport.meta.id} />
           ))}
-          <Menu.Item active={activeTab === "favorites"} name="Favorites" onClick={handleTabChange} />
+          <Menu.Item active={activeTab === "favorites"} name="Favorites" onClick={this.switchTabs} />
         </Menu>
         <TabContent attached="bottom" />
       </div>
@@ -33,13 +45,14 @@ class SportsPanel extends Component {
 
 const mapStateToProps = state => ({
   sports: state.sportsData.allSports,
+  favorites: state.favorites,
   searchTerm: state.searchTerm,
   activeTab: state.sportsData.activeTab
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleTabChange(event, { name }) {
-    dispatch(setTabAndTeams(name.toLowerCase()));
+  handleTabChange({ name }, sports) {
+    dispatch(setTabAndTeams(name.toLowerCase(), sports));
   }
 });
 

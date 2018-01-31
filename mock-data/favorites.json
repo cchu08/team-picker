@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "id": 6,
+    "name": "favorites"
+  },
+  "teams": [
+    {
+      "id": 186,
+      "full_name": "Los Angeles Lakers",
+      "display_name": "Lakers",
+      "abbr": "LAL",
+      "logo": "https://static.sprtactn.co/teamlogos/nba/100/lal.png",
+      "primary_color": "FDB927",
+      "secondary_color": "552582"
+    },
+    {
+      "id": 251,
+      "full_name": "Los Angeles Rams",
+      "display_name": "Rams",
+      "abbr": "LA",
+      "logo": "https://static.sprtactn.co/teamlogos/nfl/100/la.png",
+      "primary_color": "002244",
+      "secondary_color": "B3995D"
+    },
+    {
+      "id": 142,
+      "full_name": "Philadelphia Eagles",
+      "display_name": "Eagles",
+      "abbr": "PHI",
+      "logo": "https://static.sprtactn.co/teamlogos/nfl/100/phi.png",
+      "primary_color": "004953",
+      "secondary_color": "A5ACAF"
+    },
+    {
+      "id": 165,
+      "full_name": "Brooklyn Nets",
+      "display_name": "Nets",
+      "abbr": "BKN",
+      "logo": "https://static.sprtactn.co/teamlogos/nba/100/bkn.png",
+      "primary_color": "061922",
+      "secondary_color": "cb0436"
+    }
+  ]
+}

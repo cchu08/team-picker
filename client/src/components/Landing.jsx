@@ -11,13 +11,13 @@ class Landing extends Component {
 
   componentDidMount() {
     const { getSports, getFavorites, handleTabChange } = this.props;
-    getSports();
-    getFavorites();
+    // getSports();
+    // getFavorites();
   }
 
   render() {
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column',justifyContent: 'center' }}>
         <Search />
         <SportsPanel />
       </div>
