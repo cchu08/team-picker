@@ -16,10 +16,10 @@ Start the server
 
 ```bash
 npm run build
-npm run dev
+npm run server
 ```
 
-Open at http://localhost:8080
+Open at http://localhost:3000
 
 Take-Home
 ------------
